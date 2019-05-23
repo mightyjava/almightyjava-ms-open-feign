@@ -1,0 +1,32 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /mightyjava
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate: dialect:org.hibernate.dialect.MySQL5Dialect
+  mvc:
+    view:
+      prefix: /view/
+      suffix: .jsp
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://localhost:3306/mightyjava?createDatabaseIfNotExist=true
+  jpa:
+    show-sql: true
+---
+spring:
+  profiles: qa 
+  datasource:
+    url: jdbc:mysql://localhost:3306/almightyjava?createDatabaseIfNotExist=true      
